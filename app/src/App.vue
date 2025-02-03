@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
+  <div class="bg-[url(/public/space.jpeg)]"></div>
   <div class="navbar bg-neutral text-neutral-content">
     <div class="navbar-start">
       <div class="dropdown">
