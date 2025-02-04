@@ -1,5 +1,15 @@
 <template>
-  <body>
+  <body class="">
+    <li>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+      </nav>
+    </li>
+    <li>
+      <nav>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </li>
     <div class="bg-[url(/public/space.jpeg)] text-neutral-content">
       <h2>iuvhvdh</h2>
       <div class="grid h-56 grid-cols-3 content-start gap-4">
