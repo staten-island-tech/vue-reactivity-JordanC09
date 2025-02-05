@@ -98,7 +98,9 @@
     </div>
   </div>
   <main>
-    <AlbumCard v-for="album in album" :key="album.name" :album="album" />
+    <div class="flex flex-wrap grid grid-cols-3 grid-rows-4 gap-4">
+      <AlbumCard v-for="album in album" :key="album.name" :album="album" />
+    </div>
   </main>
 </template>
 
