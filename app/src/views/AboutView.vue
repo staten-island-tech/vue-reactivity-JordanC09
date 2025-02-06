@@ -30,7 +30,7 @@
           </li>
           <li>
             <nav>
-              <RouterLink to="/about">About</RouterLink>
+              <RouterLink to="/about">Product Shop</RouterLink>
             </nav>
           </li>
         </ul>
@@ -98,7 +98,7 @@
     </div>
   </div>
   <main>
-    <div class="flex flex-wrap grid grid-cols-3 grid-rows-4 gap-4">
+    <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
       <AlbumCard v-for="album in album" :key="album.name" :album="album" />
     </div>
   </main>
@@ -118,6 +118,90 @@ const album = [
     profit: 450,
   },
   { name: 'News of The World', artist: 'Queen', image: '/world.jpg', price: 500, profit: 1250 },
+  {
+    name: 'Nevermind',
+    artist: 'Nirvana',
+    image: '/nevermind.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    image: '/slippery.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Revolver',
+    artist: 'The Beatles',
+    image: '/revolver.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Goodbye Yellow Brick Road',
+    artist: 'Elton John',
+    image: '/roaD.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: '52nd Street',
+    artist: 'Billy Joel',
+    image: '/street.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
+    artist: 'David Bowie',
+    image: '/ziggy.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Wish You Were Here',
+    artist: 'Pink Floyd',
+    image: '/here.png',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Thriller',
+    artist: 'Michael Jackson',
+    image: '/thriller.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Master of Puppets',
+    artist: 'Metallica',
+    image: '/master.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Stop Making Sense (Live)',
+    artist: 'Talking Heads',
+    image: '/sense.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Glass Houses',
+    artist: 'Billy Joel',
+    image: '/glass.jpg',
+    price: 500,
+    profit: 1250,
+  },
+  {
+    name: 'Voulez-Vous',
+    artist: 'ABBA',
+    image: '/vous.jpg',
+    price: 500,
+    profit: 1250,
+  },
 ]
 </script>
 
