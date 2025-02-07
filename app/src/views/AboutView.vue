@@ -68,8 +68,10 @@
             <div class="card-body">
               <span class="text-lg font-bold">8 Items</span>
               <span class="text-info">Subtotal: $999</span>
-              <div class="card-actions">
-                <button class="btn btn-primary btn-block">View cart</button>
+              <div class="card-actions rounded-box bg-gray-500 justify-around items-center">
+                <nav>
+                  <RouterLink to="/cart">Go To Cart</RouterLink>
+                </nav>
               </div>
             </div>
           </div>
@@ -107,102 +109,9 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import AlbumCard from '../components/AlbumCard.vue'
+import { album } from '../Albumlist.js'
 
-const album = [
-  { name: 'The Stranger', artist: 'Billy Joel', image: '/stranger.jpg', price: 100, profit: 200 },
-  {
-    name: 'Dark Side of The Moon',
-    artist: 'Pink Floyd',
-    image: '/moon.png',
-    price: 200,
-    profit: 450,
-  },
-  { name: 'News of The World', artist: 'Queen', image: '/world.jpg', price: 500, profit: 1250 },
-  {
-    name: 'Nevermind',
-    artist: 'Nirvana',
-    image: '/nevermind.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Slippery When Wet',
-    artist: 'Bon Jovi',
-    image: '/slippery.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Revolver',
-    artist: 'The Beatles',
-    image: '/revolver.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Goodbye Yellow Brick Road',
-    artist: 'Elton John',
-    image: '/roaD.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: '52nd Street',
-    artist: 'Billy Joel',
-    image: '/street.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
-    artist: 'David Bowie',
-    image: '/ziggy.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Wish You Were Here',
-    artist: 'Pink Floyd',
-    image: '/here.png',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Thriller',
-    artist: 'Michael Jackson',
-    image: '/thriller.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Master of Puppets',
-    artist: 'Metallica',
-    image: '/master.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Stop Making Sense (Live)',
-    artist: 'Talking Heads',
-    image: '/sense.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Glass Houses',
-    artist: 'Billy Joel',
-    image: '/glass.jpg',
-    price: 500,
-    profit: 1250,
-  },
-  {
-    name: 'Voulez-Vous',
-    artist: 'ABBA',
-    image: '/vous.jpg',
-    price: 500,
-    profit: 1250,
-  },
-]
+function gotocart() {}
 </script>
 
 <style scoped></style>
