@@ -4,6 +4,7 @@
   >
     <h2 class="uppercase text-clamp">{{ album.name }}</h2>
     <img class="w-full h-full pb-6" :src="album.image" alt="" />
+    <!-- https://daisyui.com/components/card/ -->
   </div>
 </template>
 
