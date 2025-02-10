@@ -101,7 +101,7 @@
   </div>
   <main>
     <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
-      <AlbumCard v-for="album in album" :key="album.name" :album="album" />
+      <AlbumCard v-for="album in album" :key="album.name" :album="album" @click="addtocart" />
     </div>
   </main>
 </template>
@@ -110,8 +110,13 @@
 import { ref, reactive } from 'vue'
 import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
+import { yourcart } from '../cart.js'
 
-function gotocart() {}
+//bruh figure it out
+function addtocart() {
+  yourcart.push(album.name)
+  console.log(yourcart)
+}
 </script>
 
 <style scoped></style>
