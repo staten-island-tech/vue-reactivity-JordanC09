@@ -1,1 +1,1 @@
-export const yourcart = ['hi']
+export const yourcart = []

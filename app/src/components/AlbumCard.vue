@@ -4,7 +4,8 @@
   >
     <h2 class="uppercase text-clamp">{{ album.name }}</h2>
     <img class="w-full h-90 pb-6" :src="album.image" alt="" />
-    <button class="btn btn-neutral">${{ album.price }}</button>
+
+    <slot></slot>
     <!-- https://daisyui.com/components/card/ -->
   </div>
 </template>

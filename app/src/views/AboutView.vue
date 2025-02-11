@@ -101,7 +101,9 @@
   </div>
   <main>
     <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
-      <AlbumCard v-for="album in album" :key="album.name" :album="album" @click="addtocart" />
+      <AlbumCard v-for="album in album" :key="album.name" :album="album">
+        <button @click="addtocart(album.name)" class="btn btn-neutral">${{ album.price }}</button>
+      </AlbumCard>
     </div>
   </main>
 </template>
@@ -113,8 +115,9 @@ import { album } from '../Albumlist.js'
 import { yourcart } from '../cart.js'
 
 //bruh figure it out
-function addtocart() {
-  yourcart.push(album.name)
+function addtocart(name) {
+  yourcart.push(name)
+
   console.log(yourcart)
 }
 </script>
