@@ -102,7 +102,7 @@
   <main>
     <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
       <AlbumCard v-for="album in album" :key="album.name" :album="album">
-        <button @click="addtocart(album.name)" class="btn btn-neutral">${{ album.price }}</button>
+        <button @click="addtocart(album)" class="btn btn-neutral">${{ album.price }}</button>
       </AlbumCard>
     </div>
   </main>
