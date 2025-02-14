@@ -1,19 +1,35 @@
 export const album = [
-  { name: 'The Stranger', artist: 'Billy Joel', image: '/stranger.jpg', price: 100, profit: 200 },
+  {
+    name: 'The Stranger',
+    artist: 'Billy Joel',
+    image: '/stranger.jpg',
+    price: 100,
+    profit: 200,
+    quantity: 0,
+  },
   {
     name: 'Dark Side of The Moon',
     artist: 'Pink Floyd',
     image: '/moon.png',
     price: 200,
     profit: 450,
+    quantity: 0,
   },
-  { name: 'News of The World', artist: 'Queen', image: '/world.jpg', price: 500, profit: 1250 },
+  {
+    name: 'News of The World',
+    artist: 'Queen',
+    image: '/world.jpg',
+    price: 500,
+    profit: 1250,
+    quantity: 0,
+  },
   {
     name: 'Nevermind',
     artist: 'Nirvana',
     image: '/nevermind.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Slippery When Wet',
@@ -21,6 +37,7 @@ export const album = [
     image: '/slippery.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Revolver',
@@ -28,6 +45,7 @@ export const album = [
     image: '/revolver.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Goodbye Yellow Brick Road',
@@ -35,6 +53,7 @@ export const album = [
     image: '/roaD.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: '52nd Street',
@@ -42,6 +61,7 @@ export const album = [
     image: '/street.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
@@ -49,6 +69,7 @@ export const album = [
     image: '/ziggy.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Wish You Were Here',
@@ -56,6 +77,7 @@ export const album = [
     image: '/here.png',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Thriller',
@@ -63,6 +85,7 @@ export const album = [
     image: '/thriller.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Master of Puppets',
@@ -70,6 +93,7 @@ export const album = [
     image: '/master.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Stop Making Sense (Live)',
@@ -77,6 +101,7 @@ export const album = [
     image: '/sense.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Glass Houses',
@@ -84,6 +109,7 @@ export const album = [
     image: '/glass.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
   {
     name: 'Voulez-Vous',
@@ -91,5 +117,6 @@ export const album = [
     image: '/vous.jpg',
     price: 500,
     profit: 1250,
+    quantity: 0,
   },
 ]

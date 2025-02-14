@@ -116,7 +116,10 @@ import { yourcart } from '../cart.js'
 
 //bruh figure it out
 function addtocart(name) {
-  yourcart.push(name)
+  name.quantity++
+  if (name.quantity <= 1) {
+    yourcart.push(name)
+  }
 
   console.log(yourcart)
 }

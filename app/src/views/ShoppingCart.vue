@@ -8,7 +8,8 @@
       <h1>{{ yourcart }}</h1>
       <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
         <AlbumCard v-for="album in yourcart" :key="album.name" :album="album" :yourcart="yourcart">
-          <h3>Quantity: {{ quantity }}</h3>
+          <h3>Quantity: {{ album.quantity }}</h3>
+          <button @click="removeitem(album)">Remove Item</button>
         </AlbumCard>
       </div>
     </div>
@@ -21,17 +22,11 @@ import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
 import { yourcart } from '../cart.js'
 
-let quantity = ref(0)
-
-function getquantity(daalbum) {
-  yourcart.forEach((album) => {
-    if (album === daalbum) {
-      quantity++
-    }
-  })
+function removeitem(removedalbum) {
+  if (removedalbum.quantity > 1) {
+    removedalbum.quantity--
+  }
 }
-getquantity(album)
-//figure this out
 </script>
 
 <style scoped></style>
