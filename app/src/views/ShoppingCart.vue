@@ -27,6 +27,8 @@ function removeitem(removedalbum) {
     removedalbum.quantity--
   }
 }
+
+//just make album in a vue to make it reactive
 </script>
 
 <style scoped></style>
