@@ -20,7 +20,8 @@
 import { ref, reactive } from 'vue'
 import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
-import { yourcart } from '../cart.js'
+import { yourcart } from '@/cart'
+
 
 function removeitem(removedalbum) {
   if (removedalbum.quantity > 1) {
