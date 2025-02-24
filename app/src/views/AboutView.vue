@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[url(/public/space.jpeg)]"></div>
+  
   <div class="navbar bg-neutral text-neutral-content">
     <div class="navbar-start">
       <div class="dropdown">
@@ -77,6 +77,10 @@
           </div>
         </div>
       </div>
+      <div class="flex items-center space-x-2 ml-4">
+        <span class="text-lg font-semibold">Balance:</span>
+        <span class="text-lg font-bold text-green-500">${{ money }}</span> 
+      </div>
 
       <button class="btn btn-ghost btn-circle">
         <div class="indicator">
@@ -113,12 +117,16 @@ import { ref, reactive } from 'vue'
 import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
 import { yourcart } from '../cart.js'
+import {money} from '@/money'
+import {instock} from '@/stock'
 
 //bruh figure it out
+
+
 function addtocart(name) {
   name.quantity++
   if (name.quantity <= 1) {
-    yourcart.push(name)
+    yourcart.value.push(name)
   }
 
   console.log(yourcart)
