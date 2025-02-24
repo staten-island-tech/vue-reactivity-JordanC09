@@ -110,17 +110,20 @@ function updateAlbumQuantity(updatedAlbum) {
   }
 }
 function checkout(){
-  instock.value.push(yourcart.value)
+  
   let totalcost = 0
   yourcart.value.forEach((album) => {
     if (money.value > 0){
+      
       if(album.quantity >1){
         for(let i = 0; i < album.quantity;i++){
           totalcost = totalcost + album.price
+          instock.value.push(album)
         }
       
       }else{
         totalcost = totalcost + album.price
+        instock.value.push(album)
       }
       console.log(totalcost)
     }
@@ -129,11 +132,12 @@ function checkout(){
   })
   console.log(totalcost)
   money.value = money.value - totalcost
+  album.forEach((album) => album.quantity = 0)
 
   
   
   yourcart.value = []
-  console.log(instock.value)
+  console.log(instock)
   
 }
 

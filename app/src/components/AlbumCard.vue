@@ -10,11 +10,14 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  album: Object,
-  //pass in the animal which is an object
-})
+<script>
+export default {
+  name: 'AlbumCard',
+  props: {
+    album: Object,
+  },
+  // Other component logic here
+};
 </script>
 
 <style scoped></style>

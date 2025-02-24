@@ -58,7 +58,7 @@
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span class="badge badge-sm indicator-item">8</span>
+              <span class="badge badge-sm indicator-item">{{items}}</span>
             </div>
           </div>
           <div
@@ -66,8 +66,8 @@
             class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
           >
             <div class="card-body">
-              <span class="text-lg font-bold">8 Items</span>
-              <span class="text-info">Subtotal: $999</span>
+              <span class="text-lg font-bold">{{items}} Items</span>
+              <span class="text-info">Subtotal: ${{subtotal}}</span>
               <div class="card-actions rounded-box bg-gray-500 justify-around items-center">
                 <nav>
                   <RouterLink to="/cart">Go To Cart</RouterLink>
@@ -105,7 +105,7 @@
   </div>
   <main>
     <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
-      <AlbumCard v-for="album in album" :key="album.name" :album="album">
+      <AlbumCard v-for="album in filteredAlbums" :key="album.name" :album="album" :level="level.value">
         <button @click="addtocart(album)" class="btn btn-neutral">${{ album.price }}</button>
       </AlbumCard>
     </div>
@@ -114,22 +114,34 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
+import { computed } from 'vue'
 import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
 import { yourcart } from '../cart.js'
 import {money} from '@/money'
 import {instock} from '@/stock'
+import {level} from '@/level'
 
 //bruh figure it out
-
+let items = ref(0)
+let subtotal = ref(0)
+const filteredAlbums = computed(() => {
+  return album.filter(a => a.level <= level.value)
+})
 
 function addtocart(name) {
-  name.quantity++
-  if (name.quantity <= 1) {
-    yourcart.value.push(name)
-  }
 
-  console.log(yourcart)
+  if (name.price <= money.value){
+    name.quantity++
+    items.value++
+    subtotal.value = subtotal.value + name.price
+    if (name.quantity <= 1) {
+      yourcart.value.push(name)
+    }
+
+    console.log(yourcart)
+  }
+  
 }
 </script>
 

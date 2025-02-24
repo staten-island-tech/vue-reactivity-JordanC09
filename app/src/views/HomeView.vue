@@ -16,7 +16,7 @@
 
     <div class="avatar space-x-2 ml-4 relative text-center">
       <div class="w-10 h-10 rounded-full bg-yellow-300">
-        <h2 class="text-lg text-zinc-700">5</h2>
+        <h2 class="text-lg text-zinc-700">{{level}}</h2>
       </div> 
     </div>
   </div>
@@ -27,7 +27,11 @@
   <nav class="fixed bottom-0 right-0 left-0">
     <RouterLink to="/about"><img src="/cart.webp" alt="cart" class="h-24"></RouterLink>
   </nav>
-  
+  <div class="flex flex-wrap grid grid-cols-3 grid-rows-7 gap-4">
+    <AlbumCard v-for="album in instock" :key="album.name" :album="album" :instock="instock">
+   
+    </AlbumCard>
+  </div>
   
   
   
@@ -44,24 +48,55 @@ import {money} from '@/money'
 import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
 import {instock} from '@/stock'
+import {level} from '@/level'
 
 
 
 export default {
+  components: {
+    AlbumCard, 
+  },
   setup() {
-    money; 
+    money;
+    album; 
+    instock;
+    level;
+    const exp = ref(0);  
+    let tonectlevel = ref(1000);
+    
     
     let intervalId = null; 
 
     
     const myContinuousFunction = () => {
-      money.value++;
+      if (instock.value.length !== 0){
+        let max = instock.value.length
+        let randomNumber = Math.floor(Math.random() * max)
+        
+        console.log(instock.value[randomNumber])
+        money.value = money.value + instock.value[randomNumber].profit
+        let index = instock.value.findIndex(album => album.profit === instock.value[randomNumber].profit);
+        let expgain = Math.floor(instock.value[randomNumber].profit / 2)
+        
+        instock.value.splice(index,1)
+        
+        exp.value = exp.value + expgain
+        console.log(exp.value)
+        if (exp.value >= tonectlevel.value){
+          level.value += 1
+          alert("You Leveled Up! New Albums unlocked")
+          tonectlevel.value = tonectlevel.value * 5
+        }
+      }
+      
       
     };
 
     
     onMounted(() => {
-      intervalId = setInterval(myContinuousFunction, 1000); 
+      let datime = Math.floor(Math.random() * 10000)
+      console.log(datime)
+      intervalId = setInterval(myContinuousFunction, datime); 
     });
 
     
@@ -70,7 +105,12 @@ export default {
     });
 
     return {
-      money, 
+      money,
+      album,
+      instock,
+      level,
+      exp,
+      tonectlevel,
     };
   },
 };
