@@ -94,8 +94,6 @@ export default {
     }
   },
 }
-
-//localStorage.setItem();
 </script>
 
 <style scoped></style>
