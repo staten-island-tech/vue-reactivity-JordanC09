@@ -1,5 +1,4 @@
 <template>
-  
   <div class="navbar bg-neutral text-neutral-content">
     <div class="navbar-start">
       <div class="dropdown">
@@ -58,7 +57,7 @@
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span class="badge badge-sm indicator-item">{{items}}</span>
+              <span class="badge badge-sm indicator-item">{{ items }}</span>
             </div>
           </div>
           <div
@@ -66,8 +65,8 @@
             class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
           >
             <div class="card-body">
-              <span class="text-lg font-bold">{{items}} Items</span>
-              <span class="text-info">Subtotal: ${{subtotal}}</span>
+              <span class="text-lg font-bold">{{ items }} Items</span>
+              <span class="text-info">Subtotal: ${{ subtotal }}</span>
               <div class="card-actions rounded-box bg-gray-500 justify-around items-center">
                 <nav>
                   <RouterLink to="/cart">Go To Cart</RouterLink>
@@ -79,7 +78,7 @@
       </div>
       <div class="flex items-center space-x-2 ml-4">
         <span class="text-lg font-semibold">Balance:</span>
-        <span class="text-lg font-bold text-green-500">${{ money }}</span> 
+        <span class="text-lg font-bold text-green-500">${{ money }}</span>
       </div>
 
       <button class="btn btn-ghost btn-circle">
@@ -105,7 +104,12 @@
   </div>
   <main>
     <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
-      <AlbumCard v-for="album in filteredAlbums" :key="album.name" :album="album" :level="level.value">
+      <AlbumCard
+        v-for="album in filteredAlbums"
+        :key="album.name"
+        :album="album"
+        :level="level.value"
+      >
         <button @click="addtocart(album)" class="btn btn-neutral">${{ album.price }}</button>
       </AlbumCard>
     </div>
@@ -118,30 +122,26 @@ import { computed } from 'vue'
 import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
 import { yourcart } from '../cart.js'
-import {money} from '@/money'
-import {instock} from '@/stock'
-import {level} from '@/level'
+import { money } from '@/money'
+import { instock } from '@/stock'
+import { level } from '@/level'
 
 //bruh figure it out
 let items = ref(0)
 let subtotal = ref(0)
 const filteredAlbums = computed(() => {
-  return album.filter(a => a.level <= level.value)
+  return album.filter((a) => a.level <= level.value)
 })
 
 function addtocart(name) {
-
-  if (name.price <= money.value){
+  if (name.price <= money.value) {
     name.quantity++
     items.value++
     subtotal.value = subtotal.value + name.price
     if (name.quantity <= 1) {
       yourcart.value.push(name)
     }
-
-    console.log(yourcart)
   }
-  
 }
 </script>
 

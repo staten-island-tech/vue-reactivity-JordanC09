@@ -55,7 +55,6 @@ export default {
         let max = instock.value.length
         let randomNumber = Math.floor(Math.random() * max)
 
-        console.log(instock.value[randomNumber])
         money.value = money.value + instock.value[randomNumber].profit
         let index = instock.value.findIndex(
           (album) => album.profit === instock.value[randomNumber].profit,
@@ -65,7 +64,7 @@ export default {
         instock.value.splice(index, 1)
 
         exp.value = exp.value + expgain
-        console.log(exp.value)
+
         if (exp.value >= tonectlevel.value) {
           level.value += 1
           alert('You Leveled Up! New Albums unlocked')

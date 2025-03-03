@@ -39,10 +39,9 @@
       <h1 class="text-xl">Product Shop</h1>
     </div>
     <div class="navbar-end">
-      
       <div class="flex items-center space-x-2 ml-4">
         <span class="text-lg font-semibold">Balance:</span>
-        <span class="text-lg font-bold text-green-500">${{ money }}</span> 
+        <span class="text-lg font-bold text-green-500">${{ money }}</span>
       </div>
 
       <button class="btn btn-ghost btn-circle">
@@ -67,22 +66,20 @@
     </div>
   </div>
   <div>
-    
-    
     <div>
       <!-- <h1>{{ yourcart }}</h1> -->
       <div class="flex flex-wrap grid grid-cols-3 grid-rows-5 gap-4">
-        <CartCard v-for="album in yourcart" :key="album.name" :album="album" @updateQuantity="updateAlbumQuantity">
-          
+        <CartCard
+          v-for="album in yourcart"
+          :key="album.name"
+          :album="album"
+          @updateQuantity="updateAlbumQuantity"
+        >
         </CartCard>
         <!-- make this in a seperate file and this vue is only for removing js -->
         <button @click="checkout">Checkout</button>
       </div>
-      
-      
     </div>
-
-    
   </div>
 </template>
 
@@ -93,52 +90,39 @@ import CartCard from '@/components/CartCard.vue'
 import { album } from '../Albumlist.js'
 import { yourcart } from '@/cart'
 import { money } from '@/money'
-import {instock} from '@/stock'
-
+import { instock } from '@/stock'
 
 function updateAlbumQuantity(updatedAlbum) {
-
-  let index = yourcart.value.findIndex(a => a.name === updatedAlbum.name);
+  let index = yourcart.value.findIndex((a) => a.name === updatedAlbum.name)
   if (index !== -1) {
-    yourcart.value[index] = updatedAlbum;
-    console.log(updatedAlbum.quantity)
-    if(updatedAlbum.quantity === 0){
-        let index = yourcart.value.findIndex(a => a.name === updatedAlbum.name);
-        yourcart.value.splice(index,1)
+    yourcart.value[index] = updatedAlbum
 
+    if (updatedAlbum.quantity === 0) {
+      let index = yourcart.value.findIndex((a) => a.name === updatedAlbum.name)
+      yourcart.value.splice(index, 1)
     }
   }
 }
-function checkout(){
-  
+function checkout() {
   let totalcost = 0
   yourcart.value.forEach((album) => {
-    if (money.value > 0){
-      
-      if(album.quantity >1){
-        for(let i = 0; i < album.quantity;i++){
+    if (money.value > 0) {
+      if (album.quantity > 1) {
+        for (let i = 0; i < album.quantity; i++) {
           totalcost = totalcost + album.price
           instock.value.push(album)
         }
-      
-      }else{
+      } else {
         totalcost = totalcost + album.price
         instock.value.push(album)
       }
-      console.log(totalcost)
     }
-    
-  
   })
-  console.log(totalcost)
-  money.value = money.value - totalcost
-  album.forEach((album) => album.quantity = 0)
 
-  
-  
+  money.value = money.value - totalcost
+  album.forEach((album) => (album.quantity = 0))
+
   yourcart.value = []
-  console.log(instock)
-  
 }
 
 //just make album in a vue to make it reactive
