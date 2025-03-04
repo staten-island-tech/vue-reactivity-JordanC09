@@ -106,23 +106,30 @@ function updateAlbumQuantity(updatedAlbum) {
 function checkout() {
   let totalcost = 0
   yourcart.value.forEach((album) => {
-    if (money.value > 0) {
+    if (album.quantity > 1) {
+      for (let i = 0; i < album.quantity; i++) {
+        totalcost = totalcost + album.price
+      }
+    } else {
+      totalcost = totalcost + album.price
+    }
+  })
+  if (totalcost > money.value) {
+    alert('You too broke, by less')
+  } else {
+    yourcart.value.forEach((album) => {
       if (album.quantity > 1) {
         for (let i = 0; i < album.quantity; i++) {
-          totalcost = totalcost + album.price
           instock.value.push(album)
         }
       } else {
-        totalcost = totalcost + album.price
         instock.value.push(album)
       }
-    }
-  })
-
-  money.value = money.value - totalcost
-  album.forEach((album) => (album.quantity = 0))
-
-  yourcart.value = []
+    })
+    money.value = money.value - totalcost
+    album.forEach((album) => (album.quantity = 0))
+    yourcart.value = []
+  }
 }
 
 //just make album in a vue to make it reactive
