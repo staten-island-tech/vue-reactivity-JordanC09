@@ -115,7 +115,7 @@ function checkout() {
     }
   })
   if (totalcost > money.value) {
-    alert('You too broke, by less')
+    alert('You too broke, buy less')
   } else {
     yourcart.value.forEach((album) => {
       if (album.quantity > 1) {

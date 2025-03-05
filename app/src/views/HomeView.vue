@@ -28,71 +28,102 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { money } from '@/money'
 import AlbumCard from '../components/AlbumCard.vue'
 import { album } from '../Albumlist.js'
 import { instock } from '@/stock'
 import { level } from '@/level'
-
-export default {
-  components: {
-    AlbumCard,
-  },
-  setup() {
-    money
-    album
-    instock
-    level
-    const exp = ref(0)
-    let tonectlevel = ref(1000)
-
-    let intervalId = null
-
-    const myContinuousFunction = () => {
-      if (instock.value.length !== 0) {
-        let max = instock.value.length
-        let randomNumber = Math.floor(Math.random() * max)
-
-        money.value = money.value + instock.value[randomNumber].profit
-        let index = instock.value.findIndex(
-          (album) => album.profit === instock.value[randomNumber].profit,
-        )
-        let expgain = Math.floor(instock.value[randomNumber].profit / 2)
-
-        instock.value.splice(index, 1)
-
-        exp.value = exp.value + expgain
-
-        if (exp.value >= tonectlevel.value) {
-          level.value += 1
-          alert('You Leveled Up! New Albums unlocked')
-          tonectlevel.value = tonectlevel.value * 10
-        }
-      }
+const exp = ref(0)
+let tonectlevel = 1000
+let intervalId = null
+const myContinuousFunction = () => {
+  if (instock.value.length !== 0) {
+    let max = instock.value.length
+    let randomNumber = Math.floor(Math.random() * max)
+    money.value = money.value + instock.value[randomNumber].profit
+    let index = instock.value.findIndex(
+      (album) => album.profit === instock.value[randomNumber].profit,
+    )
+    let expgain = Math.floor(instock.value[randomNumber].profit / 2)
+    instock.value.splice(index, 1)
+    exp.value = exp.value + expgain
+    console.log(exp.value, tonectlevel, 'before')
+    if (exp.value >= tonectlevel) {
+      level.value += 1
+      alert('You Leveled Up! New Albums unlocked')
+      tonectlevel *= 20
+      console.log(tonectlevel)
     }
-
-    onMounted(() => {
-      let datime = Math.floor(Math.random() * 10000)
-      console.log(datime)
-      intervalId = setInterval(myContinuousFunction, datime)
-    })
-
-    onBeforeUnmount(() => {
-      clearInterval(intervalId)
-    })
-
-    return {
-      money,
-      album,
-      instock,
-      level,
-      exp,
-      tonectlevel,
-    }
-  },
+  }
 }
+onMounted(() => {
+  let datime = Math.floor(Math.random() * 10000)
+  console.log(datime)
+  intervalId = setInterval(myContinuousFunction, datime)
+})
+onBeforeUnmount(() => {
+  clearInterval(intervalId)
+})
+
+// export default {
+//   components: {
+//     AlbumCard,
+//   },
+//   setup() {
+//     money
+//     album
+//     instock
+//     level
+//     const exp = ref(0)
+//     let tonectlevel = ref(1000)
+
+//     let intervalId = null
+
+//     const myContinuousFunction = () => {
+//       if (instock.value.length !== 0) {
+//         let max = instock.value.length
+//         let randomNumber = Math.floor(Math.random() * max)
+
+//         money.value = money.value + instock.value[randomNumber].profit
+//         let index = instock.value.findIndex(
+//           (album) => album.profit === instock.value[randomNumber].profit,
+//         )
+//         let expgain = Math.floor(instock.value[randomNumber].profit / 2)
+
+//         instock.value.splice(index, 1)
+
+//         exp.value = exp.value + expgain
+
+//         if (exp.value >= tonectlevel.value) {
+//           level.value += 1
+//           alert('You Leveled Up! New Albums unlocked')
+//           tonectlevel.value = tonectlevel.value * 10
+//         }
+//       }
+//     }
+
+//     onMounted(() => {
+//       let datime = Math.floor(Math.random() * 10000)
+//       console.log(datime)
+//       intervalId = setInterval(myContinuousFunction, datime)
+//     })
+
+//     onBeforeUnmount(() => {
+//       clearInterval(intervalId)
+//     })
+
+//     return {
+//       money,
+//       album,
+//       instock,
+//       level,
+//       exp,
+//       tonectlevel,
+//     }
+//   },
+// }
 </script>
 
 <style scoped></style>
